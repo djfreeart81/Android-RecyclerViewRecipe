@@ -18,6 +18,7 @@ import java.util.LinkedList;
 public class MainActivity extends AppCompatActivity {
 
     private LinkedList<String> mRecipeList = new LinkedList<String>();
+    private LinkedList<String> mRecipeDetailList = new LinkedList<String>();
     private RecyclerView mRecyclerView;
     private RecipeAdapter mAdapter;
 
@@ -41,12 +42,15 @@ public class MainActivity extends AppCompatActivity {
         mRecipeList.addLast("Recipe 1 Test");
         mRecipeList.addLast("Recipe 2 Test");
         mRecipeList.addLast("Recipe 3 Test");
+        mRecipeDetailList.addLast("Recipe 1 Detail Test");
+        mRecipeDetailList.addLast("Recipe 2 Detail Test");
+        mRecipeDetailList.addLast("Recipe 3 Detail Test");
 
 
         // Get a handle to the RecyclerView.
         mRecyclerView = findViewById(R.id.recycler_view);
         // Create an adapter and supply the data to be displayed.
-        mAdapter = new RecipeAdapter(this,mRecipeList);
+        mAdapter = new RecipeAdapter(this,mRecipeList,mRecipeDetailList);
         // Connect the adapter with the RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
         // Give the RecyclerView a default layout manager.

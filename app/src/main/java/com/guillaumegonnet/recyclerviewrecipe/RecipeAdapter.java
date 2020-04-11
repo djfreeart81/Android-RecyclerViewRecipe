@@ -16,20 +16,25 @@ import java.util.LinkedList;
  */
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
     private final LinkedList<String> mRecipeList;
+    private final LinkedList<String> mRecipeDetailList;
     private LayoutInflater mInflater;
 
-    public RecipeAdapter(Context context, LinkedList<String> recipeList) {
+    public RecipeAdapter(Context context, LinkedList<String> recipeList,LinkedList<String> recipeDetailList) {
         this.mRecipeList = recipeList;
+        this.mRecipeDetailList = recipeDetailList;
         mInflater = LayoutInflater.from(context);
     }
 
     class RecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public final TextView recipeItemView;
+        public final TextView recipeItemViewHeader;
+        public final TextView recipeItemViewSubHeader;
+
         final RecipeAdapter mAdapter;
 
         public RecipeViewHolder(@NonNull View itemView, RecipeAdapter adapter) {
             super(itemView);
-            recipeItemView = itemView.findViewById(R.id.recipe_item_header);
+            recipeItemViewHeader = itemView.findViewById(R.id.recipe_item_header);
+            recipeItemViewSubHeader = itemView.findViewById(R.id.recipe_item_subheader);
             this.mAdapter = adapter;
             itemView.setOnClickListener(this);
         }
@@ -50,8 +55,11 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
     @Override
     public void onBindViewHolder(@NonNull RecipeAdapter.RecipeViewHolder holder, int position) {
-        String mCurrent = mRecipeList.get(position);
-        holder.recipeItemView.setText(mCurrent);
+        String mCurrentHeader = mRecipeList.get(position);
+        String mCurrentSubHeader = mRecipeDetailList.get(position);
+
+        holder.recipeItemViewHeader.setText(mCurrentHeader);
+        holder.recipeItemViewSubHeader.setText(mCurrentSubHeader);
     }
 
     @Override
