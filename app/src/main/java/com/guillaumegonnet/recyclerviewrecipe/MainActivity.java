@@ -39,12 +39,12 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        mRecipeList.addLast("Recipe 1 Test");
-        mRecipeList.addLast("Recipe 2 Test");
-        mRecipeList.addLast("Recipe 3 Test");
-        mRecipeDetailList.addLast("Recipe 1 Detail Test");
-        mRecipeDetailList.addLast("Recipe 2 Detail Test");
-        mRecipeDetailList.addLast("Recipe 3 Detail Test");
+        mRecipeList.addLast("Pate a Crepe");
+        mRecipeList.addLast("Canard à l'orange");
+        mRecipeList.addLast("Boeuf Bourguignon");
+        mRecipeDetailList.addLast("Plat typique de la chandeleur, très bon avec de la confiture ou du miel");
+        mRecipeDetailList.addLast("Plat typique du sud, alliant sucrée et salé.");
+        mRecipeDetailList.addLast("Plat traditionnel, un grand classique qui doit mijoter pendant très longtemps");
 
 
         // Get a handle to the RecyclerView.
