@@ -1,18 +1,27 @@
 package com.guillaumegonnet.recyclerviewrecipe;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
+
+    private LinkedList<String> mRecipeList = new LinkedList<String>();
+    private RecyclerView mRecyclerView;
+    private RecipeAdapter mAdapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +38,20 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        mRecipeList.addLast("Recipe 1 Test");
+        mRecipeList.addLast("Recipe 2 Test");
+        mRecipeList.addLast("Recipe 3 Test");
+
+
+        // Get a handle to the RecyclerView.
+        mRecyclerView = findViewById(R.id.recycler_view);
+        // Create an adapter and supply the data to be displayed.
+        mAdapter = new RecipeAdapter(this,mRecipeList);
+        // Connect the adapter with the RecyclerView.
+        mRecyclerView.setAdapter(mAdapter);
+        // Give the RecyclerView a default layout manager.
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
     @Override
